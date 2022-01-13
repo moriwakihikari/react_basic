@@ -1,11 +1,4 @@
-import HelloReact from './components/HelloReact';
+import { Outlet, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <>
-      <HelloReact />
-    </>
-  );
+export default function App() {
 }
-
-export default App;
