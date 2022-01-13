@@ -1,11 +1,13 @@
 import React from 'react';
+import Navigation from "../components/Navigation";
 
-export default class HelloReact extends React.Component {
-    render() {
-        return (
-            <div className="hello-react">
-                <h1>HelloReact</h1>
-            </div>
-        );
-    }
+export default function HelloReact() {
+    return(
+        <div>
+            <Navigation />
+            <main style={{ padding: "1rem 0" }}>
+                <h2>HelloReact</h2>
+            </main>
+        </div>
+    );
 }
