@@ -1,4 +1,22 @@
-import { Outlet, Link } from "react-router-dom";
+import { render } from "react-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import HelloReact from "./components/HelloReact";
+import CountUpDown from "./components/CountUpDown";
 
-export default function App() {
+function App() {
+  const rootElement = document.getElementById("root");
+  render (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HelloReact />} />
+        <Route path="count-up-down" element={<CountUpDown />} />
+      </Routes>
+    </BrowserRouter>,
+  rootElement
+  );
 }
+export default App;
