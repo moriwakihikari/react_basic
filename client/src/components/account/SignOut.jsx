@@ -3,8 +3,8 @@ import Navigation from "../../components/Navigation";
 import { Link } from "react-router-dom";
 
 export default function SignOut() {
-    document.cookie = "login_token=; max-age=0";
-
+    // document.cookie = "login_token=; max-age=0";
+    localStorage.removeItem("email");
     return(
         <div>
             <main style={{ padding: "1rem 0" }}>

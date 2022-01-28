@@ -22,8 +22,13 @@ export default function SignIn() {
 			// withCredentials
 			// リクエストに Cookie を添えて送信する
 			// API側ではCookieにTokenを保存している
-		}, {withCredentials: true})
-        // })
+		// }, {withCredentials: true})
+        })
+        .then(res => {
+            console.log(res.data.data.email);
+            localStorage.setItem('email', res.data.data.email);
+            console.log(localStorage.getItem('email'));
+        })
 
 		// リダイレクトフラグをTrue
 		setRedirect(true)
@@ -33,9 +38,9 @@ export default function SignIn() {
         // window.location.href = '/';
 
         //強引にcookieに保存
-        const login_token = Math.random().toString(36);
-        document.cookie = "login_token=" + login_token;
-        console.log(document.cookie);
+        // const login_token = Math.random().toString(36);
+        // document.cookie = "login_token=" + login_token;
+        // console.log(document.cookie);
         // Homeへリダイレクトする
         return <Navigate to={'/'} />
     }
