@@ -32,7 +32,7 @@ services:
   # ログイン機能課題から以下をコメントイン
   rb_client:
     build:
-      context: ./client
+      context: ./documents/client
       dockerfile: Dockerfile
     volumes:
       - ./client:/var/www/html/app/react_basic/client
