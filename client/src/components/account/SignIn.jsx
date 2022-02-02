@@ -37,21 +37,21 @@ export default function SignIn() {
 			// API側ではCookieにTokenを保存している
 		// }, {withCredentials: true})
         })
-		.then(res => {
-		console.log(res.data.data.id);
-		setId(res.data.data.id);
+		// .then(res => {
+		// console.log(res.data.data.id);
+		// setId(res.data.data.id);
 		// dispatch(getLoginUser(localStorage.getItem('id')))
 
 		// dispatch(increment(res))//dispatchでsliceに渡せている様な？初期値に渡さないとリロードで消えるオブジェクトでSliceにどうか渡したい受け取り方の問題か
-        })                      //恐らくslice内でstateの要領で変更させる。いやdispatch関数？を使用してslice内の関数を呼び出す
+        // })                      //恐らくslice内でstateの要領で変更させる。いやdispatch関数？を使用してslice内の関数を呼び出す
 
 
-		//2-5localStorageで実装
-        // .then(res => {
-        //     console.log(res.data.data.email);
-        //     localStorage.setItem('email', res.data.data.email);
-        //     console.log(localStorage.getItem('email'));
-        // })
+		// 2-5localStorageで実装
+        .then(res => {
+            console.log(res.data.data.id);
+            localStorage.setItem('id', res.data.data.id);
+            console.log(localStorage.getItem('id'));
+        })
 
 		// リダイレクトフラグをTrue
 		setRedirect(true)
@@ -68,8 +68,8 @@ export default function SignIn() {
 
 		//ページ遷移する且つ値が渡せない そもそもの根底が間違ってる気がしてきた
 		//どこからでもstoreにアクセスして値を保持してもらえるということはここでid渡してstoreでAPIを叩いて値を保持することが出来ないとリロードしたら消えてしまう気がしてきた
-        return <Account id={id}/>
-		// return <Navigate to={"/account"} id={id} />
+        // return <Account id={id}/>
+		return <Navigate to={"/account"} />
     }
 
     return(

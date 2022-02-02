@@ -17,7 +17,7 @@ const loginUserSlice = createSlice({
     return async (dispatch) => {
       const res = await axios.get("http://localhost:3001/api/v1/accounts/"+id);
       console.log(res.data.data);
-      dispatch(setUser(res));
+      dispatch(setUser(res.data.data));
     };
   };
   

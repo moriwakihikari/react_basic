@@ -12,31 +12,19 @@ const Account = (props) => {
     const count = useSelector((state) => state.counter.value);
     const { users } = useSelector((state) => state.users);
     const { login_user } = useSelector((state) => state.login_user);
-    const [check, setCheck] = useState()
+    const [check, setCheck] = useState([])
 
     const dispatch = useDispatch(); //sliceを叩くAPIの様なもの
-    const id = props.id;            //signinのIDを取得
-    console.log(props);
 
-    console.log(id);
-    console.log(login_user);
-    localStorage.setItem('id', id);
-    console.log(localStorage);
-    console.log(localStorage.getItem('id'));
-
-
-    useEffect(() => {               //以前state使ってlogin.userの値をリアルに変更できたが、今回出来ないような...それに伴って値は最後入手してレンダリングしてくれない様な感じ無理矢理レンダリングするもしくはstateするか
+    useEffect(() => {
         dispatch(getLoginUser(localStorage.getItem('id')))
-        // dispatch(getUsers());
-        axios.get("http://localhost:3001/api/v1/accounts/"+localStorage.getItem('id'))//無駄なAPIを叩いて力技どうしてもsliceの値をstateに保持する方法がわからず。返り値とかあるんですかね？
+        dispatch(getUsers());
         
-        .then(res => {
-            setCheck(res.data)
-        })
+        setCheck('OK');
     
     }, []);
 
-    if(localStorage.getItem('id') === 'undefined'){
+    if(!localStorage.getItem('id')){
         return <Navigate to={'/'} />
     }
 
@@ -47,18 +35,18 @@ const Account = (props) => {
                 <h2>HelloReact</h2>
                 <span>{count}</span>
                 <h2>User</h2>
-      {users && users.map((user, index) => <div key={index}>{user.name}</div>)}
+                {users && users.map((user, index) => <div key={index}>{user.name}</div>)}
                 <h2>LoginUser</h2>
                 <div>
-                    {check ? (
-                        <div>
-                    id:{login_user.data.data.id}<br></br>
-                    first_name:{login_user.data.data.attributes.first_name}<br></br>
-                    last_name:{login_user.data.data.attributes.last_name}<br></br>
-                    email:{login_user.data.data.attributes.email}<br></br>
-                    phone:{login_user.data.data.attributes.phone}
-                        </div>
-                    ) : (
+                    {login_user.id ? (
+                        <>
+                            id:{login_user.id}<br></br>
+                            first_name:{login_user.attributes.first_name}<br></br>
+                            last_name:{login_user.attributes.last_name}<br></br>
+                            email:{login_user.attributes.email}<br></br>
+                            phone:{login_user.attributes.phone}
+                        </>
+                        ) : (
                         <>nothing</>
                     ) }
                 </div>

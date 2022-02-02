@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function SignOut() {
     // document.cookie = "login_token=; max-age=0";
-    // localStorage.removeItem("email");
+    localStorage.removeItem("id");
     return(
         <div>
             <Navigation />

@@ -5,7 +5,7 @@ import { SignIn } from "../../components/account/SignIn";
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
-    value: 0
+    value: 1
   },
   reducers: {
     increment: (state) => {
