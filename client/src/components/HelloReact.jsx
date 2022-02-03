@@ -27,14 +27,18 @@ export default function HelloReact() {
                 setUsers(res.data.data)
                 // console.log(res.data)
                 // console.log(users)
+                
             })
             .catch(err => console.log(err))
+            
             // }
 		)
 	}, [])// 第二引数は第一引数に指定した関数の実行タイミングを決める
 	      // 空を渡した場合、マウント・アンマウント時のみ第１引数の関数を実行
         //   console.dir(users, { depth: null });
         // console.log(users)
+        console.log(localStorage);
+
     return(
         <div>
             <Navigation />
